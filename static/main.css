@@ -136,14 +136,21 @@ img{
     text-transform: uppercase;
     font-weight: bold;
 }
+.product-description{
+    color: #4a4c4d;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 0.5rem 0;
+}
 .product-price{
+    color: #006491;
     padding-top: 0.6rem;
     padding-right: 0.6rem;
     display: inline-block;
 }
-.product-price:first-of-type{
+.strikeme{
     text-decoration: line-through;
-    color: #006491;
 }
 .product-img img{
     transition: transform 0.6s ease;

@@ -60,7 +60,9 @@ def home(request):
         if user:
             # if yes, then login the user
             request.session["username"] = username
-            return render(request, "home.html", {"username": username})
+            data = pizzas.objects.all()
+            query = list(data.values())
+            return render(request, "home.html", {"username": username, "menu": query})
         else:
             # if no, then return error message
             return render(request, "login.html", {"error": "Invalid credentials"})
@@ -69,7 +71,9 @@ def home(request):
         if request.session.get("username"):
             # if yes, then show the home page
             username = request.session.get("username")
-            return render(request, "home.html", {"username": username})
+            data = pizzas.objects.all()
+            query = list(data.values())
+            return render(request, "home.html", {"username": username, "menu": query})
         else:
             # if no, then redirect to login page
             return render(request, "login.html", {"error": "Please login first"})
