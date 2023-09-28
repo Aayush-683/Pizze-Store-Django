@@ -6,38 +6,35 @@
   </head>
   <body>
     <div class="wrapper login">
+      {% if error %}
       <div class="error">
-        {% if error %}
         <strong>{{ error }}</strong>
-        {% endif %}
       </div>
+      {% endif %}
       <div class="container">
         <div class="col-left">
           <div class="login-text">
             <h2>Welcome!</h2>
-            <p>Create your account.<br />For Free!</p>
-            <a href="" class="btn">Sign Up</a>
+            <p>Already have an account?<br />Click below</p>
+            <a href="login" class="btn">login<a>
           </div>
         </div>
 
         <div class="col-right">
           <div class="login-form">
             <h2>Register</h2>
-            <form action="register_post" method="post"> {% csrf_token %}
+            <form action="login" method="post"> {% csrf_token %}
               <p>
                 <label>Username/Email address<span>*</span> </label>
-                <input type="text" placeholder="Username" required />
+                <input name="username" type="text" placeholder="Username" required />
               </p>
 
               <p>
                 <label>Password<span>*</span></label>
-                <input type="password" placeholder="Password" required />
+                <input name="password" type="password" placeholder="Password" required />
               </p>
               <p>
                 <input type="submit" value="Sign In" />
-              </p>
-              <p>
-                <a href="">Forgot password?</a>
               </p>
             </form>
           </div>
