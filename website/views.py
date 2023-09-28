@@ -3,6 +3,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from users.models import User
 from pizza.models import pizzas
+from orders.models import count
 # Create your views here.
 
 def login(request):
@@ -44,10 +45,7 @@ def menu(request):
     data = pizzas.objects.all()
     query = list(data.values())
     # render the menu page
-    return render(request, "menu.html", {"menu": query})
-
-# make a post request handler for login
-# make a post request handler for register    
+    return render(request, "menu.html", {"menu": query})   
     
 def home(request):
     # check if its a post request
@@ -109,3 +107,32 @@ def modifymenu(request):
             return render(request, "modifymenu.html", {"error": "Invalid task"})
     else:
         return render(request,"modifymenu.html")
+    
+def buy(request):
+    if request.method == "POST":
+        name = request.session.get("username")
+        # Check if orders have been placed before
+        order = count.objects.filter(name=name)
+        if order:
+            # If yes, then update the count
+            order = count.objects.get(name=name)
+            order.count = order.count + 1
+            order.save()
+        else:
+            # If no, then create a new entry
+            order = count(name=name, count=1)
+            order.save()
+        return render(request, "buy.html", {"count": order.count, "msg": "Order placed successfully"})
+    else:
+        username = request.session.get("username")
+        pid = request.GET.get("pizza")
+        order = count.objects.filter(name=username)
+        if order:
+            pizza = pizzas.objects.get(id=pid)
+            order = count.objects.get(name=username)
+            return render(request, "buy.html", {"count": order.count, "msg": "", "pizza": pizza})
+        else:
+            pizza = pizzas.objects.get(id=pid)
+            order = count(name=username, count=0)
+            order.save()
+            return render(request, "buy.html", {"count": order.count, "msg": "", "pizza": pizza})

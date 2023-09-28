@@ -12,5 +12,6 @@ urlpatterns = [
     path("menu", menu, name="menu"),
     path("logout", logout, name="logout"),
     path("login", login, name="login"),
-    path("modifymenu", modifymenu, name="modifymenu")
+    path("modifymenu", modifymenu, name="modifymenu"),
+    path("buy", buy, name="buy"),
 ]

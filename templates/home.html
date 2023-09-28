@@ -44,10 +44,12 @@
                     />
                   </div>
                   <div class="product-btns">
-                    <button type="button" class="btn-buy">
-                      buy now
-                      <span><i class="fas fa-shopping-cart"></i></span>
-                    </button>
+                    <a href="{% url "buy" %}?pizza={{ i.id }}">
+                        <button type="button" class="btn-buy">
+                        buy now
+                        <span><i class="fas fa-shopping-cart"></i></span>
+                      </button>
+                    </a>
                   </div>
                 </div>
 

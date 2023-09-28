@@ -32,12 +32,14 @@
               <img src="static/pizzas/{{ i.image }}" alt="product image">
             </div>
             <div class="product-btns">
-              <button type="button" class="btn-buy"> buy now
-                <span><i class="fas fa-shopping-cart"></i></span>
-              </button>
+               <a href="{% url "buy" %}?pizza={{ i.id }}">
+                  <button type="button" class="btn-buy">
+                    buy now
+                    <span><i class="fas fa-shopping-cart"></i></span>
+                  </button>
+                </a>
             </div>
           </div>
-
           <div class="product-info">
             <div class="product-info-top">
               <h2 class="sm-title">{{ i.category }}</h2>
