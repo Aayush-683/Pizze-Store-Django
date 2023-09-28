@@ -30,6 +30,9 @@ def header(request):
 def contact(request):
     return render(request,"contact.html")
 
+def feedback(request):
+    return render(request,"feedback.html")
+
 def register(request):
     return render(request,"register.html")
 
@@ -38,22 +41,10 @@ def logout(request):
     return render(request,"login.html")
 
 def menu(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        price = request.POST.get("price")
-        # check if username and password are in database
-        menu = pizzas.objects.filter(name=name)
-        if menu:
-            return render(request, "menu.html", {"error": "menu already exists"})
-        else:
-            menu = pizzas(name=name, price=price)
-            pizzas.save()
-            return render(request, "menu.html", {"error": "menu created successfully. Please login."})
-    else:
-        data = pizzas.objects.all()
-        query = list(data.values())
-        # render the menu page
-        return render(request, "menu.html", {"menu": query})
+    data = pizzas.objects.all()
+    query = list(data.values())
+    # render the menu page
+    return render(request, "menu.html", {"menu": query})
 
 # make a post request handler for login
 # make a post request handler for register    
@@ -84,4 +75,33 @@ def home(request):
             return render(request, "login.html", {"error": "Please login first"})
         
 def modifymenu(request):
-    return render(request,"modifymenu.html")
+    if request.method == "POST":
+        task = request.POST.get("task")
+        name = request.POST.get("name")
+        if (task == "add"):
+            acutal_price = request.POST.get("actual_price")
+            discounted_price = request.POST.get("discounted_price")
+            image = request.POST.get("image")
+            category = request.POST.get("category")
+            discount = (int(acutal_price) - int(discounted_price))/int(acutal_price) * 100
+            description = request.POST.get("description")
+            # Check if the pizza already exists
+            pizza = pizzas.objects.filter(name=name)
+            if pizza:
+                return render(request, "modifymenu.html", {"error": "Pizza with that name already exists"})
+            else:
+                pizza = pizzas(name=name, actual_price=acutal_price, discounted_price=discounted_price, image=image, category=category, discount=discount, description=description)
+                pizza.save()
+                return render(request, "modifymenu.html", {"error": "Pizza added successfully"})
+        elif (task == "remove"):
+            # Check if the pizza already exists
+            pizza = pizzas.objects.filter(name=name)
+            if pizza:
+                pizza.delete()
+                return render(request, "modifymenu.html", {"error": "Pizza with that name was removed successfully"})
+            else:
+                return render(request, "modifymenu.html", {"error": "Pizza does not exist"})
+        else:
+            return render(request, "modifymenu.html", {"error": "Invalid task"})
+    else:
+        return render(request,"modifymenu.html")

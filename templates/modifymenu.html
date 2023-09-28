@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modify Menu</title>
     <link rel="stylesheet" href="/static/modifymenu.css" />
+    <script>
+      function toggleFields() {
+        var task = document.querySelector('input[name="task"]:checked').value;
+        var elementsToToggle = document.querySelectorAll(".toggleable");
+        var actualPrice = document.getElementById("actual_price");
+        var discountedPrice = document.getElementById("discounted_price");
+        var image = document.getElementById("image");
+        var description = document.getElementById("description");
+        var category = document.querySelectorAll('input[name="category"]');
+
+        for (var i = 0; i < elementsToToggle.length; i++) {
+          if (task === "add" || elementsToToggle[i].classList.contains("always-visible")) {
+            elementsToToggle[i].style.display = "block";
+            actualPrice.setAttribute("required", true);
+            discountedPrice.setAttribute("required", true);
+            image.setAttribute("required", true);
+            description.setAttribute("required", true);
+            for (var j = 0; j < category.length; j++) {
+              category[j].setAttribute("required", true);
+            }
+          } else {
+            elementsToToggle[i].style.display = "none";
+            actualPrice.removeAttribute("required");
+            discountedPrice.removeAttribute("required");
+            image.removeAttribute("required");
+            description.removeAttribute("required");
+            for (var j = 0; j < category.length; j++) {
+              category[j].removeAttribute("required");
+            }
+          }
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -13,9 +46,38 @@
       <h2 class="sub-heading">
         Enter the details of the item to modify the menu
       </h2>
-      <form action="home" method="post" class="menu-form">
+      {% if error %}
+      <div class="error">
+        <p>{{ error }}</p>
+      </div>
+      {% endif %}
+      <form action="modifymenu" method="post" class="menu-form">
         {% csrf_token %}
         <div class="form-group">
+          <label>Task</label>
+          <input
+            type="radio"
+            name="task"
+            value="add"
+            id="add"
+            class="form-radio"
+            onchange="toggleFields()"
+            checked
+            required
+          />
+          <label for="add" class="radio-label">Add to Menu</label>
+          <input
+            type="radio"
+            name="task"
+            value="remove"
+            id="remove"
+            class="form-radio"
+            onchange="toggleFields()"
+            required
+          />
+          <label for="remove" class="radio-label">Remove from Menu</label>
+        </div>
+        <div class="form-group toggleable always-visible">
           <label for="name">Name</label>
           <input
             type="text"
@@ -25,7 +87,7 @@
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group toggleable">
           <label for="actual_price">Actual Price</label>
           <input
             type="number"
@@ -35,7 +97,7 @@
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group toggleable">
           <label for="discounted_price">Discounted Price</label>
           <input
             type="number"
@@ -45,7 +107,7 @@
             required
           />
         </div>
-        <div class="class-form">
+        <div class="class-form toggleable">
           <label for="type">Type</label>
           <input
             type="radio"
@@ -53,6 +115,8 @@
             value="veg"
             id="veg"
             class="form-radio"
+            checked
+            required
           />
           <label for="veg" class="radio-label">Veg</label>
           <input
@@ -61,10 +125,11 @@
             value="non-veg"
             id="non-veg"
             class="form-radio"
+            required
           />
           <label for="non-veg" class="radio-label">Non-Veg</label>
         </div>
-        <div class="form-group">
+        <div class="form-group toggleable">
           <label for="image">Image Name</label>
           <input
             type="text"
@@ -74,7 +139,7 @@
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group toggleable">
           <label for="description">Description</label>
           <input
             type="text"
@@ -83,25 +148,6 @@
             class="form-control"
             required
           />
-        </div>
-        <div class="form-group">
-          <label>Task</label>
-          <input
-            type="radio"
-            name="task"
-            value="add"
-            id="add"
-            class="form-radio"
-          />
-          <label for="add" class="radio-label">Add to Menu</label>
-          <input
-            type="radio"
-            name="task"
-            value="remove"
-            id="remove"
-            class="form-radio"
-          />
-          <label for="remove" class="radio-label">Remove from Menu</label>
         </div>
         <div class="form-group">
           <button type="submit" class="btn-submit">Modify</button>

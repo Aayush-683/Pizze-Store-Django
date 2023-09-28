@@ -106,3 +106,12 @@ input[type="number"] {
     background-color: #cc0000;
     /* Darker red color on hover */
 }
+
+.error {
+    padding: 10px;
+    background-color: #6b6868;
+    color: white;
+    border-radius: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+}
