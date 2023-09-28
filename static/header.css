@@ -11,9 +11,9 @@
   background: #fff;
 }
 nav{
-  position: fixed;
-  background: #5225256b;
-  opacity: 50%;
+  /* position: fixed; */
+  background: #006491;
+  /* opacity: 50%; */
   width: 100%;
   padding: 10px 0;
   z-index: 12;
