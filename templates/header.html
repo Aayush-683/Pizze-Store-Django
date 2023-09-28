@@ -1,0 +1,22 @@
+{% load static %}
+<head>
+<link rel="stylesheet" href={% static '/style.css'%}>
+</head>
+{% block Header %}
+<nav>
+    <div class="menu">
+    <div class="logo">
+        <a href="{% url "home" %}">Dominos Pizza</a>
+        
+    </div>
+    <ul>
+        <li><a href="{% url "home" %}">Home</a></li>
+        <li><a href="{% url "about" %}">About Us</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Feedback</a></li>
+        <li><a href="#">Login</a></li>
+    </ul>
+    </div>
+</nav>
+{% endblock Header %}
