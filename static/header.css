@@ -139,18 +139,19 @@ nav .menu {
   background: white;
   color: black;
 }
-
 .search-bar {
   display: flex;
   align-items: center;
+  margin-right: -150px;
+  /* This will push the search bar to the left */
 }
 
 .search-bar input {
   padding: 8px;
+  width: 130px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
-  margin-right: 5px;
+  font-size: 12px;
 }
 
 .search-bar button {
@@ -160,9 +161,9 @@ nav .menu {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 8px 15px;
+  padding: 6px 12px;
 }
 
 .search-bar button:hover {
