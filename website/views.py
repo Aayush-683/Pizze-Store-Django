@@ -51,7 +51,7 @@ def menu(request):
             return render(request, "menu.html", {"error": "menu created successfully. Please login."})
     else:
         data = pizzas.objects.all()
-        query = serializers.serialize('json', data)
+        query = list(data.values())
         # render the menu page
         return render(request, "menu.html", {"menu": query})
 
