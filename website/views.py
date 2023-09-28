@@ -82,3 +82,6 @@ def home(request):
         else:
             # if no, then redirect to login page
             return render(request, "login.html", {"error": "Please login first"})
+        
+def modifymenu(request):
+    return render(request,"modifymenu.html")

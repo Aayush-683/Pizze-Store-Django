@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modify Menu</title>
+    <link rel="stylesheet" href="/static/modifymenu.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="heading">Modify Menu</h1>
+      <h2 class="sub-heading">
+        Enter the details of the item to modify the menu
+      </h2>
+      <form action="home" method="post" class="menu-form">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="actual_price">Actual Price</label>
+          <input
+            type="number"
+            id="actual_price"
+            name="actual_price"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="discounted_price">Discounted Price</label>
+          <input
+            type="number"
+            id="discounted_price"
+            name="discounted_price"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="class-form">
+          <label for="type">Type</label>
+          <input
+            type="radio"
+            name="category"
+            value="veg"
+            id="veg"
+            class="form-radio"
+          />
+          <label for="veg" class="radio-label">Veg</label>
+          <input
+            type="radio"
+            name="category"
+            value="non-veg"
+            id="non-veg"
+            class="form-radio"
+          />
+          <label for="non-veg" class="radio-label">Non-Veg</label>
+        </div>
+        <div class="form-group">
+          <label for="image">Image Name</label>
+          <input
+            type="text"
+            id="image"
+            name="image"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Task</label>
+          <input
+            type="radio"
+            name="task"
+            value="add"
+            id="add"
+            class="form-radio"
+          />
+          <label for="add" class="radio-label">Add to Menu</label>
+          <input
+            type="radio"
+            name="task"
+            value="remove"
+            id="remove"
+            class="form-radio"
+          />
+          <label for="remove" class="radio-label">Remove from Menu</label>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-submit">Modify</button>
+          <a href="home" class="btn-back">Back to Home Page</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

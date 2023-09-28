@@ -10,5 +10,6 @@ urlpatterns = [
     path("register", register, name="register"),
     path("menu", menu, name="menu"),
     path("logout", logout, name="logout"),
-    path("login", login, name="login")
+    path("login", login, name="login"),
+    path("modifymenu", modifymenu, name="modifymenu")
 ]
