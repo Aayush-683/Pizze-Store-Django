@@ -1,0 +1,112 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.order-box {
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.product-info img {
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.user-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-info .input-field {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.user-info .submit-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.user-info .submit-button:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s;
+}
+
+.user-info .submit-button:focus {
+    outline: none;
+}
+
+.button a {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    /* Larger padding */
+    border: none;
+    border-radius: 10px;
+    /* Rounder corners */
+    text-decoration: none;
+    font-size: 20px;
+    /* Larger font size */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.button a:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+#submitbutton {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    /* Larger padding */
+    border: none;
+    border-radius: 10px;
+    /* Rounder corners */
+    text-decoration: none;
+    font-size: 15px;
+    /* Larger font size */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#submitbutton:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
