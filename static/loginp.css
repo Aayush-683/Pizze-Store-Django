@@ -137,7 +137,7 @@ body {
 
 .login .login-form input {
     display: block;
-    width: 100%;
+    /* width: 100%; */
     height: 35px;
     padding: 10px;
     outline: none;
@@ -152,7 +152,7 @@ body {
 .login .login-form button,
 .login .login-form input[type="submit"] {
     display: inline-block;
-    width: 100%;
+    /* width: 100%; */
     margin-top: 5px;
     color: #2aa15f;
     font-size: 16px;

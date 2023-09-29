@@ -170,3 +170,22 @@ nav .menu {
   background-color: #cc0000;
   /* Darker red color on hover */
 }
+
+.footer {
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #006491;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.text-muted {
+  margin: 20px 0;
+  color: white;
+}

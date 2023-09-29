@@ -40,13 +40,15 @@
             />
             <input
               type="text"
+              pattern="[0-9]{10,10}"
               name="phone"
-              placeholder="Phone Number"
+              placeholder="Enter your number without the country code"
               class="input-field"
               required
             />
           </div>
           <input id="submitbutton" type="submit" value="Buy Now" class="submit-button" />
+          <button id="cancelbutton" type="button" onclick="window.location.href='/menu'">Cancel</button>
         </form>
         {% endif %}
       </div>

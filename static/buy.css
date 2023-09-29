@@ -111,6 +111,26 @@ html {
     /* Darker blue on hover */
 }
 
+#cancelbutton {
+    background-color: #ff1e00;
+    color: white;
+    padding: 15px 30px;
+    /* Larger padding */
+    border: none;
+    border-radius: 10px;
+    /* Rounder corners */
+    text-decoration: none;
+    font-size: 15px;
+    /* Larger font size */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#cancelbutton:hover {
+    background-color: #b31b00;
+    /* Darker blue on hover */
+}
+
 .buttons {
     display: flex;
     flex-direction: row;
