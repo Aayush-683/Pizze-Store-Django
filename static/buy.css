@@ -110,3 +110,10 @@ html {
     background-color: #0056b3;
     /* Darker blue on hover */
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
